@@ -37,7 +37,7 @@ Nach der Ersteinrichtung müssen die Dateien hier verbleiben.
 
 ### Schnellstart / Quickstart
 
-(Bitte lesen Sie trotzdem die gesamte Anleitung durch)
+(Bitte lesen Sie trotzdem die gesamte Anleitung durch.)
 
 1. Starten Sie auf **PC-A**
 ```bash
