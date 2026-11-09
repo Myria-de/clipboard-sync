@@ -22,6 +22,19 @@ die lokale Zwischenablage.
 
 ## Einrichtung
 
+### Herunterladen und kopieren
+Kopieren Sie alle Dateien dieses Projekts beispielsweise in den Ordner ~/Scripts/clipboard-sync" in Ihrem Homeverzeichnis.
+
+Wenn git installiert ist (`sudo apt install git`), verwenden Sie
+
+```bash
+mkdir ~/Scripts
+git clone https://github.com/Myria-de/clipboard-sync.git
+```
+Andernfalls laden Sie das Projekt als unter "Releases" herunter.
+
+Nach der Ersteinrichtung müssen die Dateien hier verbleiben.
+
 ### Voraussetzungen prüfen und fehlende Pakete installieren
 
 Als normaler Desktop-Benutzer in einem Terminal starten:
