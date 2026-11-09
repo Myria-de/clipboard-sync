@@ -50,9 +50,11 @@ Installieren Sie die fehlende Pakete.
 
 3. Erzeugen Sie auf PC-B" einen SSH-Schlüssel, den Sie für die Anmeldung ohne Passwort auf PC-A übertragen (siehe https://github.com/Myria-de/clipboard-sync#manuelle-einrichtung).
 
-4.  Kopieren Sie auf PC-A die Datei `config.example.ini` als `config.ini`. Passen Sie die Datei `config.ini` an.
+4. Kopieren Sie auf PC-A die Datei `config.example.ini` als `config.ini`. Passen Sie die Datei `config.ini` an.
 
 5. Rufen Sie auf PC-B im Terminal `install_get_clipboard.sh` auf.
+
+6. Weisen Sie auf **PC-A** dem Script 
 
 ### Voraussetzungen prüfen und fehlende Pakete installieren
 
@@ -186,7 +188,7 @@ bei einem Aufruf aus einem anderen Verzeichnis. Sein absoluter Pfad lässt sich
 in den Desktop-Einstellungen als Tastenkürzel hinterlegen:
 
 ```text
-/home/[Benutzer]/src/clipboard-sync/run.sh
+/home/[Benutzer]/Scripts/clipboard-sync/run.sh
 ```
 
 Das Tool liest die normale Zwischenablage (Strg+C), nicht die X11-Primärauswahl.
@@ -285,12 +287,12 @@ systemctl --user disable --now get-clipboard.service
 ```
 
 Ein anderer Ordner lässt sich mit `systemctl --user edit get-clipboard.service`
-dauerhaft einstellen. Beispiel für diesen Projektpfad:
+dauerhaft einstellen. Beispiel für diesen Projektpfad (Pfade anpassen):
 
 ```ini
 [Service]
 ExecStart=
-ExecStart=/usr/bin/python3 /home/te/src/clipboard-sync/get_clipboard.py --directory /home/Benutzer/Clipboard --indicator
+ExecStart=/usr/bin/python3 /home/te/Scripts/clipboard-sync/get_clipboard.py --directory /home/Benutzer/Clipboard --indicator
 ```
 
 Danach `systemctl --user daemon-reload` und
