@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 project_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-"$project_dir/setup.sh"
+"$project_dir/setup_get_clipboard.sh"
 /usr/bin/python3 "$project_dir/clipboard_indicator.py" --check
 if [[ -z "${DISPLAY:-}" && -z "${WAYLAND_DISPLAY:-}" ]]; then
     printf '%s\n' 'Installation aus einem Terminal in der grafischen Sitzung starten.' >&2
