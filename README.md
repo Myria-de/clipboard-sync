@@ -36,25 +36,39 @@ Andernfalls laden Sie das Projekt als unter "Releases" herunter.
 Nach der Ersteinrichtung müssen die Dateien hier verbleiben.
 
 ### Schnellstart / Quickstart
-1. Starten Sie auf PC-A
+
+(Bitte lesen Sie trotzdem die gesamte Anleitung durch)
+
+1. Starten Sie auf **PC-A**
 ```bash
 ./check_requirements.sh --role sender --backend auto
 ```
 Installieren Sie die fehlende Pakete.
 
-2. Starten Sie auf PC-B
+2. Starten Sie auf **PC-B**
 ```bash
 ./check_requirements.sh --role receiver --directory "$HOME/Clipboard"
 ```
 Installieren Sie die fehlende Pakete.
 
-3. Erzeugen Sie auf PC-B" einen SSH-Schlüssel, den Sie für die Anmeldung ohne Passwort auf PC-A übertragen (siehe https://github.com/Myria-de/clipboard-sync#manuelle-einrichtung).
+3. Erzeugen Sie auf **PC-B** einen SSH-Schlüssel, den Sie für die Anmeldung ohne Passwort auf **PC-A** übertragen (siehe https://github.com/Myria-de/clipboard-sync#manuelle-einrichtung).
 
-4. Kopieren Sie auf PC-A die Datei `config.example.ini` als `config.ini`. Passen Sie die Datei `config.ini` an.
+4. Kopieren Sie auf **PC-A** die Datei `config.example.ini` als `config.ini`. Passen Sie die Datei `config.ini` an.
 
-5. Rufen Sie auf PC-B im Terminal `install_get_clipboard.sh` auf.
+5. Rufen Sie auf **PC-B** im Terminal `install_get_clipboard.sh` auf.
 
-6. Weisen Sie auf **PC-A** dem Script 
+6. Weisen Sie auf **PC-A** dem Script `clipboard_sync.py` ein Tastaturkürzel für den bequemen Aufruf vor.
+
+**Ubuntu-Gnome:** In den Gnome-Einstellungen öffnen Sie dazu das Untermenü "Tastatur → Tastenkombinationen anzeigen und anpassen → Eigene Tastenkürzel". Nach einem Klick auf "Tastenkürzel hinzufügen" legt man hier einen Eintrag mit dem Namen "Clipboard-Sync" an. In das Feld "Befehl" kommt diese Zeile:
+
+```bash
+/home/[Benutzer]/Scripts/clipboard-sync/run_clipboard_sync.sh`
+```
+Als Tastenkombination kommt eine Tastenkombination infrage, die noch nicht belegt und leicht zu merken ist – etwa Windows-C (Super+C).
+
+**Linux Mint:** Gehen Sie im Menü auf "Einstellungen → Tastatur → Tastenkombinationen". Klicken Sie auf "Eigene Tastenkombiation erstellen". Vergeben Sie einen Namen und geben Sie hinter `Befehl:` auch hier `/home/[Benutzer]/Scripts/clipboard-sync/run_clipboard_sync.sh`. Klicken Sie auf das Feld hinter "Befehl:" und vergeben Sie eine Tastenkombination.
+
+Den Platzhalter `[Benutzer]` ersetzen Sie jeweils duch Ihren Benutzernamen.
 
 ### Voraussetzungen prüfen und fehlende Pakete installieren
 
@@ -68,7 +82,7 @@ Das Skript prüft auf Ubuntu und Linux Mint standardmäßig beide Tools einschli
 X11, Wayland, Panel-Indikator und systemd. Es prüft System-Python ab Version 3.10,
 die tatsächlich importierbaren Python-Module, GTK/GLib, Ayatana AppIndicator bzw.
 die ältere AppIndicator-Bibliothek, `xclip`, `wl-copy`/`wl-paste`, `file` und OpenSSH.
-Auf einem Empfangsrechner (PC-B) wird auch `openssh-server` für eingehende SFTP-Transfers
+Auf einem Empfangsrechner (**PC-B**) wird auch `openssh-server` für eingehende SFTP-Transfers
 benötigt. Abhängig vom Desktop wird vorhandene Panel-Unterstützung erkannt oder
 ein passendes Systempaket vorgeschlagen.
 
@@ -109,15 +123,14 @@ System-Python-Version wird gemeldet; das Skript ersetzt sie nicht durch ein PPA.
 
 ### Manuelle Einrichtung
 
-**PC-A** und **PC-B**: System-Python unter `/usr/bin/python3` (**3.10 oder neuer**), OpenSSH-Client und das zur Sitzung passende
-Zwischenablageprogramm müssen installiert sein. Für Debian/Ubuntu:
+**PC-A** und **PC-B**: System-Python unter `/usr/bin/python3` (**3.10 oder neuer**), OpenSSH-Client und das zur Sitzung passende Zwischenablageprogramm müssen installiert sein. Für Debian/Ubuntu:
 
 ```bash
 sudo apt install python3 openssh-client xclip wl-clipboard file
-./setup.sh
+./setup_get_clipboard.sh
 ```
 
-`setup.sh` prüft die Version des System-Python und meldet fehlende Hilfsprogramme.
+`setup_get_clipboard.sh` prüft die Version des System-Python und meldet fehlende Hilfsprogramme.
 Sender und Empfänger ohne Panel verwenden ausschließlich Python-Standardbibliotheken.
 Der optionale Panel-Indikator benötigt GTK/AppIndicator aus den Systempaketen (siehe
 unten). Alle Tools laufen direkt mit `/usr/bin/python3`; pip und eine virtuelle
@@ -162,33 +175,33 @@ entfallen und aus der SSH-Konfiguration stammen.
 Text oder ein Bild kopieren, anschließend in derselben grafischen Sitzung:
 
 ```bash
-./run.sh
+./run_clipboard_sync.sh
 ```
 
 Alternativ ohne Konfigurationsdatei:
 
 ```bash
-./run.sh --host 192.168.1.50 --user benutzer --remote-dir /home/benutzer/Clipboard
+./run_clipboard_sync.sh --host 192.168.1.50 --user benutzer --remote-dir /home/benutzer/Clipboard
 ```
 
 Weitere Beispiele:
 
 ```bash
-./run.sh --type text
-./run.sh --type image --backend wayland
-./run.sh --backend x11
-./run.sh --config /pfad/zur/config.ini
-./run.sh --port 2222 --identity ~/.ssh/id_ed25519
-./run.sh --help
+./run_clipboard_sync.sh --type text
+./run_clipboard_sync.sh --type image --backend wayland
+./run_clipboard_sync.sh --backend x11
+./run_clipboard_sync.sh --config /pfad/zur/config.ini
+./run_clipboard_sync.sh --port 2222 --identity ~/.ssh/id_ed25519
+./run_clipboard_sync.sh --help
 ```
 
-Kommandozeilenoptionen überschreiben die Konfiguration. `run.sh` verwendet immer
+Kommandozeilenoptionen überschreiben die Konfiguration. `run_clipboard_sync.sh` verwendet immer
 `/usr/bin/python3` und findet das Tool sowie die Standardkonfiguration auch
 bei einem Aufruf aus einem anderen Verzeichnis. Sein absoluter Pfad lässt sich
 in den Desktop-Einstellungen als Tastenkürzel hinterlegen:
 
 ```text
-/home/[Benutzer]/Scripts/clipboard-sync/run.sh
+/home/[Benutzer]/Scripts/clipboard-sync/run_clipboard_sync.sh
 ```
 
 Das Tool liest die normale Zwischenablage (Strg+C), nicht die X11-Primärauswahl.
@@ -203,9 +216,10 @@ Exitcodes: `0` Erfolg, `1` Laufzeitfehler, `2` ungültige Kommandozeile,
 
 ## Empfang mit get_clipboard.py
 
-Den Projektordner auf dem **Empfangsrechner** (PC-B) ablegen und dort `./setup.sh`
+Den Projektordner auf dem **Empfangsrechner** (**PC-B**) ablegen und dort `./setup_get_clipboard.sh`
 ausführen, um die Voraussetzungen zu prüfen.
-Der Empfänger (PC-B) benötigt `xclip` für X11 bzw. `wl-copy` aus `wl-clipboard` für
+
+Der Empfänger (**PC-B**) benötigt `xclip` für X11 bzw. `wl-copy` aus `wl-clipboard` für
 Wayland sowie das Programm `file` zur Erkennung von Bildformaten.
 
 Manueller Start in einem Terminal der grafischen Sitzung:
@@ -221,7 +235,7 @@ Benutzernamen. Ein fehlender Ordner wird
 angelegt. Beim Sender muss `remote_dir` auf genau diesen Ordner des Empfängers
 zeigen.
 
-Der Empfänger (PC-B) reagiert ausschließlich auf `clipboard_text` und `clipboard_image`.
+Der Empfänger (**PC-B**) reagiert ausschließlich auf `clipboard_text` und `clipboard_image`.
 Er nutzt Linux-inotify und wartet auf `CLOSE_WRITE` (Ende eines Schreibzugriffs)
 oder `MOVED_TO` (eine Datei wird unter dem erwarteten Namen in den Ordner
 verschoben). Pausen bei einem noch offenen SFTP-Upload lösen keine Übernahme aus.
@@ -254,7 +268,7 @@ sudo apt install python3-gi gir1.2-gtk-3.0 gir1.2-ayatanaappindicator3-0.1
 Alternativ unterstützt das Tool die ältere Bibliothek `gir1.2-appindicator3-0.1`.
 `/usr/bin/python3 clipboard_indicator.py --check` prüft die Bibliotheken.
 
-Auf dem Empfangsrechner (PC-B) **als Desktop-Benutzer, ohne sudo**, in einem Terminal
+Auf dem Empfangsrechner (**PC-B**) **als Desktop-Benutzer, ohne sudo**, in einem Terminal
 der angemeldeten grafischen Sitzung ausführen:
 
 ```bash
