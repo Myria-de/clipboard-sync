@@ -147,11 +147,11 @@ aus `~/.ssh/config`. Einmalig die SSH-Verbindung zum Ziel auf **PC-B** einrichte
 ```bash
 # Falls noch kein geeigneter Schlüssel vorhanden ist:
 ssh-keygen -t ed25519
-# Eigenen Benutzer und Zielrechner einsetzen:
+# Eigenen Benutzer und Zielrechner (PC-A) einsetzen:
 ssh-copy-id [benutzer]@192.168.1.50
 ssh [benutzer]@192.168.1.50
 ```
-Den Platzhaler "[benutzer]" ersetzen Sie jeweils durch Ihren Benutzernamen. Passen Sie auch die IP-Adresse an. Wenn Sie nach dem Passwort gefragt werden, drücken Sie einfach die Enter-Taste. Es wird in diesem Fall nicht benötigt und bleibt leer.
+Den Platzhalter "[benutzer]" ersetzen Sie jeweils durch Ihren Benutzernamen. Passen Sie auch die IP-Adresse an. Wenn Sie nach dem Passwort gefragt werden, drücken Sie einfach die Enter-Taste. Es wird in diesem Fall nicht benötigt und bleibt leer.
 
 Beim ersten Verbindungsaufbau den Host-Fingerabdruck mit dem Zielrechner abgleichen
 und bestätigen. Das Tool akzeptiert ausschließlich bereits bekannte Hostschlüssel.
