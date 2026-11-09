@@ -1,0 +1,17 @@
+[Unit]
+Description=Empfangene Text- und Bilddateien in die Zwischenablage übernehmen
+Documentation=file:@PROJECT@/README.md
+PartOf=graphical-session.target
+After=graphical-session-pre.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 "@PROJECT@/get_clipboard.py" --directory "%h/Clipboard" --indicator
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=5
+UMask=0077
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=graphical-session.target
