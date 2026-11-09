@@ -20,7 +20,7 @@ die lokale Zwischenablage.
   erkannt. Unter Wayland muss der Compositor den Zugriff durch `wl-paste`
   unterstützen. Es erfolgt kein stiller Wechsel auf die XWayland-Zwischenablage.
 
-<img width="2203" height="1416" alt="Datenaustausch" src="https://github.com/user-attachments/assets/7697ebe4-ffb4-4c55-9f9c-9c17d30cfaeb" />
+<img width="550" height="354" alt="Datenaustausch" src="https://github.com/user-attachments/assets/7697ebe4-ffb4-4c55-9f9c-9c17d30cfaeb" />
 
 ## Einrichtung
 
