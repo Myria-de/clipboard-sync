@@ -35,6 +35,25 @@ Andernfalls laden Sie das Projekt als unter "Releases" herunter.
 
 Nach der Ersteinrichtung müssen die Dateien hier verbleiben.
 
+### Schnellstart / Quickstart
+1. Starten Sie auf PC-A
+```bash
+./check_requirements.sh --role sender --backend auto
+```
+Installieren Sie die fehlende Pakete.
+
+2. Starten Sie auf PC-B
+```bash
+./check_requirements.sh --role receiver --directory "$HOME/Clipboard"
+```
+Installieren Sie die fehlende Pakete.
+
+3. Erzeugen Sie auf PC-B" einen SSH-Schlüssel, den Sie für die Anmeldung ohne Passwort auf PC-A übertragen (siehe https://github.com/Myria-de/clipboard-sync#manuelle-einrichtung).
+
+4.  Kopieren Sie auf PC-A die Datei `config.example.ini` als `config.ini`. Passen Sie die Datei `config.ini` an.
+
+5. Rufen Sie auf PC-B im Terminal `install_get_clipboard.sh` auf.
+
 ### Voraussetzungen prüfen und fehlende Pakete installieren
 
 Als normaler Desktop-Benutzer in einem Terminal starten:
@@ -88,7 +107,7 @@ System-Python-Version wird gemeldet; das Skript ersetzt sie nicht durch ein PPA.
 
 ### Manuelle Einrichtung
 
-PC-A und PC-B: System-Python unter `/usr/bin/python3` (**3.10 oder neuer**), OpenSSH-Client und das zur Sitzung passende
+**PC-A** und **PC-B**: System-Python unter `/usr/bin/python3` (**3.10 oder neuer**), OpenSSH-Client und das zur Sitzung passende
 Zwischenablageprogramm müssen installiert sein. Für Debian/Ubuntu:
 
 ```bash
@@ -102,13 +121,13 @@ Der optionale Panel-Indikator benötigt GTK/AppIndicator aus den Systempaketen (
 unten). Alle Tools laufen direkt mit `/usr/bin/python3`; pip und eine virtuelle
 Python-Umgebung sind nicht nötig.
 
-Auf dem Zielrechner (PC-B) muss ein SSH-Server mit aktiviertem SFTP erreichbar sein.
+Auf dem Zielrechner (**PC-B**) muss ein SSH-Server mit aktiviertem SFTP erreichbar sein.
 Für einen Linux-Zielrechner mit Debian/Ubuntu kann dafür `openssh-server`
 installiert werden. Den gewünschten Zielordner dort anlegen, beispielsweise
 `mkdir -p ~/Clipboard`.
 
 Die Anmeldung verwendet SSH-Schlüssel oder den SSH-Agenten sowie die Einstellungen
-aus `~/.ssh/config`. Einmalig die SSH-Verbindung zum Ziel einrichten (siehe auch https://devwelt.de/myria-de/heimserver/-/wikis/Fernzugriff-%C3%BCber-SSH):
+aus `~/.ssh/config`. Einmalig die SSH-Verbindung zum Ziel auf **PC-B** einrichten (siehe auch https://devwelt.de/myria-de/heimserver/-/wikis/Fernzugriff-%C3%BCber-SSH):
 
 ```bash
 # Falls noch kein geeigneter Schlüssel vorhanden ist:
