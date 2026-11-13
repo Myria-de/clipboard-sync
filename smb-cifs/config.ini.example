@@ -1,0 +1,23 @@
+[linux]
+share = //192.168.178.111/Austausch
+remote_dir = Clipboard
+username = te
+password = HIER_PASSWORT_EINTRAGEN
+domain =
+local_dir = ./Clipboard
+smbclient = smbclient
+xclip = xclip
+wl_paste = wl-paste
+timeout = 30
+
+[windows]
+share = //192.168.178.111/Austausch
+remote_dir = Clipboard
+timeout = 30
+
+[receiver]
+; Leer: share und remote_dir aus [windows] verwenden.
+directory =
+poll_interval = 0.5
+settle_time = 1.0
+load_existing = no

@@ -7,6 +7,10 @@ nur bei Bedarf. Der zusätzliche Empfänger `get_clipboard.py` überwacht auf de
 Zielrechner den Eingangsordner und übernimmt eingehende Dateien automatisch in
 die lokale Zwischenablage.
 
+Im Ordner `smb-cifs` ist eine Version von `clipboard_sync.py` zu finden, die eine Samba/Windows-Freigabe für den Datenaustausch verwendet. Das Tool funktioniert unter Linux und Windows. Die Zugangsdaten sind in der Datei `config.ini` gespeichert. Weitere Details entnehmen Sie der `README.md` aus diesem Ordner.
+
+**Die folgende Beschreibung bezieht sich auf die Linux-Version und SFTP.**
+
 - Text wird als UTF-8 in **`clipboard_text`** gespeichert.
 - Bilder werden unverändert in **`clipboard_image`** gespeichert, bevorzugt als
   PNG, sofern die Quellanwendung PNG anbietet. Auch JPEG und andere angebotene
