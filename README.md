@@ -37,9 +37,9 @@ Wenn git installiert ist (`sudo apt install git`), verwenden Sie
 mkdir ~/Scripts
 git clone https://github.com/Myria-de/clipboard-sync.git
 ```
-Andernfalls laden Sie das Projekt als unter "Releases" herunter.
+Andernfalls laden Sie das Projekt unter "Releases" herunter.
 
-Nach der Ersteinrichtung müssen die Dateien hier verbleiben.
+Nach der Ersteinrichtung müssen die Dateien im Zielordner verbleiben.
 
 ### Schnellstart / Quickstart
 
