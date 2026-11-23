@@ -1,13 +1,13 @@
 # Clipboard Sync
 Synchronising the clipboard between two PCs on a local network (text and image) 
 
-`clipboard_sync.py` überträgt unter Linux die aktuelle Zwischenablage per
+**SFTP:** `clipboard_sync.py` überträgt unter Linux die aktuelle Zwischenablage per
 SFTP auf einen anderen Rechner. Starten, übertragen, beenden: Der Sender läuft
 nur bei Bedarf. Der zusätzliche Empfänger `get_clipboard.py` überwacht auf dem
 Zielrechner den Eingangsordner und übernimmt eingehende Dateien automatisch in
 die lokale Zwischenablage.
 
-Im Ordner `smb-cifs` ist eine Version von `clipboard_sync.py` zu finden, die eine Samba/Windows-Freigabe für den Datenaustausch verwendet. Das Tool funktioniert unter Linux und Windows. Die Zugangsdaten sind in der Datei `config.ini` gespeichert. Weitere Details entnehmen Sie der `README.md` aus diesem Ordner.
+**Samba:** Im Ordner `smb-cifs` ist eine Version von `clipboard_sync.py` zu finden, die eine Samba/Windows-Freigabe für den Datenaustausch verwendet. Das Tool funktioniert unter Linux und Windows. Die Zugangsdaten sind in der Datei `config.ini` gespeichert. Weitere Details entnehmen Sie der `README.md` aus diesem Ordner.
 
 **Die folgende Beschreibung bezieht sich auf die Linux-Version und SFTP.**
 
